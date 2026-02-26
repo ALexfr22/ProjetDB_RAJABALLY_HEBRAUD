@@ -250,5 +250,6 @@ Une session d’ouverture ne peut exister que dans le cadre d’une salle donné
 
 
 Voici notre MCD :
-<img width="1183" height="638" alt="image" src="https://github.com/user-attachments/assets/fe75d674-3034-42e9-b306-cf0987e98663" />
+<img width="1123" height="586" alt="image" src="https://github.com/user-attachments/assets/231c8c35-f5dd-467b-9b45-1295914eb026" />
+
 

@@ -247,3 +247,8 @@ Entité faible
 L’entité SESSION_OUVERTURE est une entité faible dépendante de l’entité Salle.
 
 Une session d’ouverture ne peut exister que dans le cadre d’une salle donnée.
+
+
+Voici notre MCD :
+<img width="1183" height="638" alt="image" src="https://github.com/user-attachments/assets/fe75d674-3034-42e9-b306-cf0987e98663" />
+

@@ -155,3 +155,95 @@ Dictionnaire de données
 | Nom produit                  | Texte  | 50     |
 | Catégorie produit            | Texte  | 30     |
 | Stock produit                | Entier | 5      |
+
+## Analyse critique du résultat
+
+Le résultat obtenu à partir du prompt a été vérifié afin de s’assurer qu’il respecte les consignes du sujet.
+
+Le nombre de données du dictionnaire est conforme à la contrainte imposée (entre 25 et 35). Le dictionnaire contient 34 données.
+
+Les règles de gestion ont été reformulées lorsque nécessaire afin d’assurer leur cohérence avec le MCD final. En particulier, des précisions ont été apportées concernant :
+
+l’unicité de l’ouvreur responsable d’un bloc,
+
+le lien obligatoire entre une session d’ouverture et une salle,
+
+la dépendance de la session d’ouverture vis-à-vis de la salle.
+
+Ces ajustements ont permis de garantir la cohérence entre les règles métier, le dictionnaire de données et le modèle conceptuel produit.
+
+## Modèle Conceptuel de Données
+
+Le modèle conceptuel de données représente l’organisation et le fonctionnement d’un réseau de salles d’escalade de bloc.
+
+Les principales entités identifiées sont :
+
+Salle, qui représente les différentes salles gérées par l’entreprise.
+
+Zone, qui représente les secteurs de grimpe appartenant à une salle.
+
+Bloc, qui représente les voies d’escalade présentes dans un secteur.
+
+Prise, qui représente les éléments physiques composant les blocs.
+
+Employé (ouvreur), qui représente les ouvreurs responsables de la création des blocs.
+
+Session_ouverture, qui représente les journées planifiées pour créer des blocs.
+
+Client, qui représente les usagers des salles.
+
+Abonnement, qui représente les abonnements souscrits par les clients.
+
+Produit, qui représente les articles vendus en boutique.
+
+Les relations principales sont :
+
+Une salle contient plusieurs zones.
+
+Une zone contient plusieurs blocs.
+
+Un bloc est composé de plusieurs prises (relation plusieurs-à-plusieurs).
+
+Un bloc est créé par un seul ouvreur lors d’une session d’ouverture.
+
+Une session d’ouverture se déroule dans une seule salle.
+
+Un client peut souscrire plusieurs abonnements.
+
+Un client peut acheter plusieurs produits.
+
+Le modèle respecte la 3FN :
+
+Chaque entité possède un identifiant unique.
+
+Les attributs dépendent uniquement de la clé primaire.
+
+Il n’existe pas de dépendance transitive entre attributs.
+
+Le MCD intègre plusieurs éléments avancés conformément aux exigences du sujet.
+
+Association n-aire
+
+L’association OUVERTURE relie trois entités :
+
+Bloc
+
+Employé
+
+Session_ouverture
+
+Elle permet de modéliser qu’un bloc est créé par un ouvreur donné lors d’une session donnée.
+Cette association est ternaire car la relation métier nécessite simultanément les trois entités pour être correctement définie.
+
+Association récursive
+
+L’association SUPERVISER_OUVERTURE est une relation récursive sur l’entité Employé.
+
+Elle modélise le fait qu’un ouvreur peut superviser d’autres ouvreurs.
+Un employé peut superviser plusieurs employés, et un employé peut être supervisé par un seul employé.
+
+Entité faible
+
+L’entité SESSION_OUVERTURE est une entité faible dépendante de l’entité Salle.
+
+Une session d’ouverture ne peut exister que dans le cadre d’une salle donnée.

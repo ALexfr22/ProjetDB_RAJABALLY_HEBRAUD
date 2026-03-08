@@ -10,6 +10,8 @@ L’objectif est de :
 - la 3ème forme normale (3FN)
 - des éléments avancés de modélisation
 
+**Partie 1 :**
+
 ## Prompt utilisé :
 Agis comme une analyste de données spécialisée en conception de systèmes d’information travaillant dans le domaine de l’escalade de bloc au sein d’une entreprise qui gère plusieurs salles en France. L’entreprise souhaite appliquer la méthode MERISE pour concevoir son système d’information et tu es chargée de la phase d’analyse des besoins. Tu dois d’abord établir les règles de gestion des données sous forme d’une liste à puces, exprimées comme le ferait une personne connaissant parfaitement le fonctionnement de l’entreprise mais sans connaissances techniques en base de données. Ensuite, à partir de ces règles, tu dois produire un dictionnaire de données brutes sous forme de tableau comportant les colonnes suivantes : signification de la donnée, type (entier, texte, date, décimal, etc.) et taille (nombre de caractères ou de chiffres). Le dictionnaire doit contenir entre 25 et 35 données maximum, sans doublons, et les informations fournies doivent permettre la construction ultérieure d’un MCD respectant la troisième forme normale (3FN) ainsi que l’intégration d’éléments avancés de modélisation tels qu’une association n-aire, une association récursive et éventuellement une entité faible. L’entreprise gère plusieurs salles situées principalement en milieu urbain, inspirées d’enseignes comme Arkose, Climbing District ou Climb Up ; chaque salle propose des blocs d’escalade sans assurage classés par code couleur (jaune, vert, bleu, rouge, noir, violet), plusieurs secteurs de grimpe, des sessions d’ouverture réalisées par des ouvreurs, ainsi qu’un espace restauration et une boutique. Les clients peuvent acheter des produits, souscrire à des abonnements et fréquenter différentes salles du réseau. Les règles doivent être cohérentes, non redondantes, strictement limitées à la phase d’analyse des besoins (sans produire de MCD ni de modèle relationnel) et la réponse doit contenir uniquement deux sections intitulées « Règles de gestion » et « Dictionnaire de données », sans commentaire supplémentaire.
 
@@ -251,5 +253,22 @@ Une session d’ouverture ne peut exister que dans le cadre d’une salle donné
 
 Voici notre MCD :
 <img width="1123" height="586" alt="image" src="https://github.com/user-attachments/assets/231c8c35-f5dd-467b-9b45-1295914eb026" />
+
+**Partie 2 :**
+
+**MLD correspondant au MCD:**
+
+Salle = (id_salle INT, nom_salle VARCHAR(50), adresse_salle VARCHAR(50), ville_salle VARCHAR(50), code_postal_salle INT, capacite_salle INT, horaire_salle VARCHAR(50));
+Secteur = (id_secteur INT, nom_secteur VARCHAR(50), #id_salle);
+session_ouverture = (#id_salle, id_session INT, date_session INT);
+Prise = (id_prise INT, couleur_prise VARCHAR(50), type_prise VARCHAR(50), matiere_prise VARCHAR(50), quantite_prise INT, date_prise INT);
+Client = (id_client INT, nom_client VARCHAR(50), prenom_client VARCHAR(50), email_client VARCHAR(50));
+abonnement = (id_abonnement VARCHAR(50), types_abonnement VARCHAR(50), date_debut INT, date_fin INT, #id_salle, #id_client);
+produit = (id_produit INT, catégorie_produit VARCHAR(50), quantite_produit INT, prix_produit VARCHAR(50));
+Employé = (id_employe INT, nom_employe VARCHAR(50), prenom_employe VARCHAR(50), role_employe VARCHAR(50), #id_employe_1*);
+Bloc = (id_bloc INT, couleur_bloc VARCHAR(50), date_creation_bloc INT, date_retrait_bloc VARCHAR(50), #(#id_salle, id_session), #id_employe, #id_secteur);
+composer = (#id_bloc, #id_prise);
+achat = (#id_client, #id_produit, date_achat INT, quantité INT);
+
 
 

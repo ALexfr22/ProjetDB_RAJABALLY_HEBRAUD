@@ -264,11 +264,11 @@ session_ouverture = (#id_salle, id_session INT, date_session INT);
 Prise = (id_prise INT, couleur_prise VARCHAR(50), type_prise VARCHAR(50), matiere_prise VARCHAR(50), quantite_prise INT, date_prise INT); 
 Client = (id_client INT, nom_client VARCHAR(50), prenom_client VARCHAR(50), email_client VARCHAR(50)); 
 abonnement = (id_abonnement VARCHAR(50), types_abonnement VARCHAR(50), date_debut INT, date_fin INT, #id_salle, #id_client); 
-produit = (id_produit INT, catégorie_produit VARCHAR(50), quantite_produit INT, prix_produit VARCHAR(50)); 
-Employé = (id_employe INT, nom_employe VARCHAR(50), prenom_employe VARCHAR(50), role_employe VARCHAR(50), #id_employe_1*); 
+produit = (id_produit INT, categorie_produit VARCHAR(50), quantite_produit INT, prix_produit VARCHAR(50)); 
+Employe = (id_employe INT, nom_employe VARCHAR(50), prenom_employe VARCHAR(50), role_employe VARCHAR(50), #id_employe_1*); 
 Bloc = (id_bloc INT, couleur_bloc VARCHAR(50), date_creation_bloc INT, date_retrait_bloc VARCHAR(50), #(#id_salle, id_session), #id_employe, #id_secteur); 
 composer = (#id_bloc, #id_prise); 
-achat = (#id_client, #id_produit, date_achat INT, quantité INT); 
+achat = (#id_client, #id_produit, date_achat INT, quantite INT); 
 
 
 

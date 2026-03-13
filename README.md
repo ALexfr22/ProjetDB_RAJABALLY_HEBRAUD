@@ -280,6 +280,10 @@ composer = (#id_bloc, #id_prise);
 
 achat = (#id_client, #id_produit, date_achat INT, quantite INT); 
 
+**Cinquième étape :**
+
+Pour notre scénario d'utilisation, nous avons décidé de se placer en tant que gérant d'une salle d'escalade. C'est pour nous le scénario d'utilisation le plus plausible de notre base de données. Le gérant a donc accès à toutes les informations sur ses clients, les stocks des produits et ses salariés. 
+
 
 
 
